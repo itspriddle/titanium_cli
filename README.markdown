@@ -26,6 +26,10 @@ command line.
         titanium run --platform=android
 
 
+## Installation
+
+    gem install titanium_cli
+
 
 ## TODO
 
