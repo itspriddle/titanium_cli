@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+
+begin
+  require 'titanium_cli/base'
+rescue LoadError
+  $:.unshift File.expand_path(File.join(File.dirname(__FILE__), '/../lib'))
+  begin
+    require 'titanium_cli/base'
+  rescue LoadError
+    warn "Can't find titanium_cli/base"
+    exit -1
+  end
+end
+
+TitaniumCLI::Base.run(ARGV)
