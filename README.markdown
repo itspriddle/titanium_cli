@@ -22,7 +22,7 @@ command line.
       Run iPhone project:
         titanium run --platform=iphone
 
-      Run iPhone project:
+      Run Android project:
         titanium run --platform=android
 
 
