@@ -40,12 +40,13 @@ module TitaniumCLI
       if action = argv.shift
         case action.to_sym
         when :create
-          create_project(argv) and return
+          create_project(argv)
         when :run
-          run_project(argv) and return
+          run_project(argv)
         else
-          raise "Invalid action #{action}" and return
+          raise "Invalid action #{action}"
         end
+        return
       end
       puts usage.gsub(/^      /, '')
     end
