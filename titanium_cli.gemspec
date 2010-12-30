@@ -1,6 +1,6 @@
 $:.unshift 'lib'
 
-require 'titanium_cli/version'
+require 'titanium_cli'
 
 Gem::Specification.new do |s|
   s.name             = 'titanium_cli'

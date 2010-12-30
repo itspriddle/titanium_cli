@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    titanium_cli (0.0.1)
+    titanium_cli (0.0.2)
 
 GEM
   specs:
