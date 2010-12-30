@@ -81,7 +81,7 @@ module TitaniumCLI
     # python /Library/Application\ Support/Titanium/mobilesdk/osx/1.4.2/titanium.py create --platform=iphone --name=FooBar --id=com.foobar.baz --directory=.
     # python /Library/Application\ Support/Titanium/mobilesdk/osx/1.4.2/titanium.py create --platform=iphone,android --name=FooBar --id=com.foobar.baz --android=/opt/android-sdk
     def create_project(args)
-      bin "create #{args.join(' ')}"
+      system %{#{bin} create #{args.join(' ')}}
     end
 
     # Run project
@@ -89,14 +89,15 @@ module TitaniumCLI
     # python /Library/Application\ Support/Titanium/mobilesdk/osx/1.4.2/titanium.py run --platform=iphone
     # python /Library/Application\ Support/Titanium/mobilesdk/osx/1.4.2/titanium.py run --platform=android
     def run_project(args)
-      bin "run #{args.join(' ')} 2>&1 | tee -a #{log}"
+      cmd = "run #{args.join(' ')} 2>&1 | tee -a #{log}"
+      system %{trap 'killall -9 "iPhone Simulator"' INT ; #{bin} #{cmd}}
     end
 
   private
 
-    # Runs the titanium.py command
-    def bin(command)
-      system %{"#{sdk_root}/titanium.py" #{command}}
+    # Path to titanium.py
+    def bin
+      %{"#{sdk_root}/titanium.py"}
     end
 
   end
